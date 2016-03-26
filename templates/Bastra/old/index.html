@@ -1,0 +1,32 @@
+<!--{% include "floppyforms/input.html" %}-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Index</title>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    // Checking support for <input type="date"> using Modernizr:
+    // http://modernizr.com/
+    if (!Modernizr.inputtypes.date) {
+      var options = {
+        dateFormat: 'yy-mm-dd'
+      };
+      $('#{{ attrs.id }}').datepicker(options);
+    }
+  });
+</script>
+</head>
+<body>
+<form id = "information_form" method="post" action="">
+
+		{% csrf_token %}
+		{% for field in form.visible_fields %}
+			{{ field }}
+		{% endfor %}
+
+		<input type="submit" name="submit" value="Submit" />
+	</form>
+
+</body>
+</html>

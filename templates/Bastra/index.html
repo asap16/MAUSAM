@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+
+<head>
+  <meta charset = "utf-8">
+  <title>Mausam </title>
+  <meta name="description" content="Mausam">
+  <!--Latest compiled and minified CSS -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'mausam.css' %}">
+    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="mausam.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    // Checking support for <input type="date"> using Modernizr:
+    // http://modernizr.com/
+    if (!Modernizr.inputtypes.date) {
+      var options = {
+        dateFormat: 'yy-mm-dd'
+      };
+      $('#{{ attrs.id }}').datepicker(options);
+    }
+  });
+</script>
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand" style="color: rgb(255, 255, 255);font-family: sans-serif">Mausam</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right" id="myNavbar">
+                    <li><a class="page-scroll" href="#home">Home</a></li>
+                    <li><a class="page-scroll" href="#howitworks">How it works</a></li>
+                    <li><a class="page-scroll" href="#contact">contact</a></li>
+                </ul>
+            </div>
+        </div>  <!--end of container-->
+    </nav>  <!--end of navbar-->
+    
+    <!--content-->
+    
+<div class="container-width">
+	<div class="front-side" id="home">
+		<div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <img src="{% static "pic1.jpg" %}" alt="First slide">  
+                </div>
+                <div class="item">
+                    <img src="{% static "pic2.jpg" %}" alt="Second slide">
+                </div>
+            </div>
+		<a class="left carousel-control" href="#myCarousel" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+		<a class="right carousel-control" href="#myCarousel" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+		</div>
+	
+		<div class="search">
+			<div class="container-width">
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<div class="form-section">
+							<div class="row">
+								<form id = "information_form" method="post" action="">
+
+		{% csrf_token %}
+		{% for field in form.visible_fields %}
+			{{ field }}
+		{% endfor %}
+
+		<input type="submit" name="submit" value="Submit" />
+	</form>
+
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+        
+	<div class="front-text hidden-xs">
+        <div class="col-md-12 text-center">
+            <h1 class="text-header1">You've never got to worry about what to wear today!</h1>
+            <h3 class="text-header2">We've got you covered!</h3>
+            <div class="buttons">
+                <a class="btn btn-clear btn-sm btn-min-block" name="howitworks" href="#howitworks">How it works</a>
+                <a class="btn btn-clear btn-sm btn-min-block" id="letsgetstarted" name="letsgetstarted" href="#">Let's get Started!</a>
+                
+			</div>
+        </div>
+    </div>
+	
+    <!--body-->
+    <div class="container middle-content" id="howitworks">
+        <h2 class="text-header">How it Works?</h2>
+            <div class="row">
+            	<div class="col-md-2">
+            	</div>
+                <div class="col-md-3 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
+                        <h3>Choose a location you want to go</h3>
+                        <p class="text-muted">Select any locations in the world.</p>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                </div>
+                
+                <div class="col-md-3 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                        <h3>Get started</h3>
+                        <p class="text-muted">Fill in some information of the location.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row space">
+            </div>
+        
+            <div class="row">
+            	<div class="col-md-2">
+                </div>
+            	<div class="col-md-3 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                        <h3>Relax, we have suggestions for you</h3>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-3 text-center">
+                    <div class="service-box">
+                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                        <h3>Enjoy your trip!</h3>
+                    </div>
+                </div>
+            </div>
+    </div>
+        
+        
+    <!--footer-->
+    <!--<div class="container-fluid contact" id="contact">
+  <h2 class="text-center">CONTACT</h2>
+  <div class="row">
+    <div class="col-sm-5">
+      <p>Contact us and we'll get back to you within 24 hours.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span> Washington, DC</p>
+      <p><span class="glyphicon glyphicon-phone"></span> +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span> myemail@something.com</p> 
+    </div>
+    <div class="col-sm-7">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
+        </div>
+        <div class="col-sm-6 form-group">
+          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
+        </div>
+      </div>
+      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea><br>
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <button class="btn btn-default pull-right" type="submit">Send</button>
+        </div>
+      </div> 
+    </div>
+  </div>
+</div>-->
+        
+<div id="contact" data-spy="scroll" data-target= ".navbar" data-offset="60" class="contact">
+		<div class="container">
+			<header class="section-header">
+				<h2 class="text-header">Contact</h2>
+				<div class="spacer"></div>
+				<h3 class="text-center">Do you want to contact us? We highly appreciate your comments and suggestions!</h3>
+			</header>
+			<br>
+			<br>
+			<form class="form-horizontal col-md-offset-3">
+				<div class="form-group ">
+					<div class="col-md-2">
+						<label class="control-label">Name</label>
+					</div>
+					<div class="col-md-4">
+						<input type="text" class="form-control" name="name">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-md-2">
+						<label class="control-label">Email </label>
+					</div>
+					<div class="col-md-4">
+						<input type="email" class="form-control" name="email">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-md-2">
+						<label class="control-label">Subject </label>
+					</div>
+					<div class="col-md-4">
+						<input type="text" class="form-control" name="subject">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-md-2">
+						<label class="control-label">Message </label>
+					</div>
+					<div class="col-md-6">
+						<textarea class="form-control" rows="6" cols="6" name="message"> </textarea>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-2">
+					</div>
+					<div class="col-md-3">
+						<button type="submit" class="btn btn-default btn-lg btn-block">Submit Message</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+        
+    
+    <!-- Set height and width with CSS -->
+<div class="container" id="googleMap" style="height:400px;width:100%;"></div>
+
+<!-- Add Google Maps -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script>
+var myCenter = new google.maps.LatLng(38.9226885,-77.0216264);
+
+function initialize() {
+var mapProp = {
+center:myCenter,
+zoom:14,
+scrollwheel:false,
+draggable:false,
+mapTypeId:google.maps.MapTypeId.ROADMAP
+};
+
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+var marker = new google.maps.Marker({
+position:myCenter,
+});
+
+marker.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>    
+        
+
+<!-footer-->
+<div class="container-width footer">
+		<div class="row">
+			<div class="col-md-3">
+				<h1 class="text2">Our Digits </h1>
+				<p class="text1"><b>Location:</b> Washington, DC</p>
+				<p class="text1"><b>Telephone:</b> 571-354-559</p>
+				<p class="text1"><b>Email:</b> surajupreti713@gmail.com</p>
+			</div>
+			
+			<div class="col-md-4">
+			</div>
+			
+			<div class="col-md-5">
+				<h1 class="text2">Get in touch with us!</h1>
+				<div class="footer-icons" >
+					<ul class="social-media">
+						<li><a href="#" class="facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#" class="twitter"><i class="fa fa-twitter"></i></a></li>
+						<li><a href="#" class="skype"><i class="fa fa-skype"></i></a></li>
+						<li><a href="#" class="instagram"><i class="fa fa-instagram"></i></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
